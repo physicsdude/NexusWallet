@@ -1,0 +1,75 @@
+{
+  "name": "NexusWallet",
+  "version": "2.0.0",
+  "description": "A wallet for your Nexus",
+  "main": "server/main.js",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build",
+    "distwin": "build -w",
+    "distlin": "build -m",
+    "distmac": "build -l"
+  },
+  "build": {
+    "appId": "THEAPPID",
+    "asar": true,
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "assets/icons/png"
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "assets/icons/win/icon.ico"
+    },
+    "extraFiles": [
+      "nexus",
+      "nexusminer",
+      "Nexus.exe",
+      "testnet1/*",
+      "testnet2/*",
+      "walletdev101/*"
+    ]
+  },
+  "repository": "https://github.com/Nexusoft/NexusGUI",
+  "keywords": [
+    "Nexus",
+    "Cryptocurrency"
+  ],
+  "author": "The Nexus Core Developers <colin@nexus.io>",
+  "license": "MIT",
+  "dependencies": {
+    "app-root-dir": "^1.0.2",
+    "app-root-path": "^2.0.1",
+    "electron-log": "^2.2.6",
+    "handlebars": "^4.0.10",
+    "loki-fs-cipher-adapter": "^1.0.2",
+    "lokijs": "^1.4.3",
+    "nexus": "",
+    "node-json-rpc2": "^1.1.0"
+  },
+  "devDependencies": {
+    "electron": "^1.6.8",
+    "electron-builder": "^17.8.0",
+    "electron-icon-maker": "0.0.3",
+    "node-json-rpc2": "^1.1.0"
+  }
+}
