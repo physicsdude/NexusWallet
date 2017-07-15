@@ -312,6 +312,8 @@ function createWindow () {
                 log.debug("tx type is")
                 log.debug(typeof(tx))
                 log.debug("tx is null? "+ (tx === null) )
+                log.debug("tx is ")
+                log.debug(tx)
                 if (tx === null) {
                     log.debug("new tx "+elem.txid)
                     global.ldbTransactions.insert(elem)

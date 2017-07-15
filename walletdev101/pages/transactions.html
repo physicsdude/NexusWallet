@@ -129,18 +129,18 @@
             <!-- MAIN NEXUS CONTENT -->
             <div class="row">
                 <div class="col-lg-12">
-                    <tbody id="incomingTransactionsPlaceholder">
-                    </tbody>
+                    <div id="incomingTransactionsPlaceholder">
+                    </div>
                     <script id="incomingTransactionsTemplate" type="text/x-handlebars-template">
                         {{#each incomingTransactions}}
                         <div>
                             <p>
-                                <strong>Incoming Transaction - {{confirmations}} Confirmations (2SRekt3392928fjfjdf83dj2jd39) [11/2/2016 04:42]</strong>
-                                <span class="pull-right text-muted">XX% Complete</span>
+                                <strong>In Process Transaction - {{confirmations}} Confirmations ({{account}}) [{{time}}]</strong>
+                                <span class="pull-right text-muted">{{percentComplete}}% Complete ({{category}})</span>
                             </p>
                             <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                    <span class="sr-only">70% Complete (success)</span>
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{percentComplete}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentComplete}}%">
+                                    <span class="sr-only">{{percentComplete}}% Complete ({{category}})</span>
                                 </div>
                             </div>
                         </div>

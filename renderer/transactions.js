@@ -12,19 +12,30 @@
         console.log("Updating transaction info in transactions.js")
 
         var ldbData = remote.getGlobal('ldbTransactions')
-        var transactionsA = ldbData.find()
+
+        console.log("Showing info about incoming transactions, if any.")
+        var incomingTransactionsA = ldbData.find({'confirmations': { '$lt': 6 }})
+        incomingTransactionsA.forEach( function(ele){
+            ele.percentComplete = parseInt(100 * ele.confirmations / 6)
+        })
+        console.log("incomingTransactionsA is ")
+        console.log(incomingTransactionsA)
 
         // Fill in the following info for incoming transactions:
         // address, dateTime, percentComplete,
 
-        //var transactionsTemplateElement = document.getElementById("transactionsTemplate")
-        //var transactionsTempalte = transactionsTempalteElement.outerHTML
+        var incomingTransactionsTemplate = $("#incomingTransactionsTemplate").html()
+        console.log(incomingTransactionsTemplate)
+        var incomingTemplate = handlebars.compile(incomingTransactionsTemplate)
+        var incomingResult = incomingTemplate({incomingTransactions: incomingTransactionsA})
+        $("#incomingTransactionsPlaceholder").html(incomingResult)
+
+        var transactionsA = ldbData.find({'confirmations': { '$gt': 5 }})
+        console.log(transactionsA)
         var transactionsTemplate = $("#transactionsTemplate").html()
         console.log(transactionsTemplate)
         var template = handlebars.compile(transactionsTemplate)
         var result = template({transactions: transactionsA})
-        //var ph = document.getElementById("transactionsPlaceholder")
-        //ph.innerHTML = result
         $("#transactionsPlaceholder").html(result)
 
     } // end updateGetinfo
@@ -32,7 +43,7 @@
     $(document).ready(function () {
         var error = null
         myrpc.doit('transactions', error, function(error) {
-            if (error) alert("error is " + error)
+            if (Object.keys(error).length !== 0 && error.constructor === Object) alert("error is " + error)
             updateTransactions()
         })
     })

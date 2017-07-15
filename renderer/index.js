@@ -11,24 +11,24 @@
 
         try {
 
-        var ldbData = remote.getGlobal('ldbData')
-        var getinfo = ldbData.findObject({"nexus": "getinfo"})
-        var interestrate = getinfo.res.result.interestweight.toFixed(4) + "%"
-        var balance = getinfo.res.result.balance.toFixed(2)
-        var connections = getinfo.res.result.connections
-        var blocks = getinfo.res.result.blocks
-        var testnet = getinfo.res.result.testnet
-        console.log("In renderer.js interestweight="+interestrate)
+            var ldbData = remote.getGlobal('ldbData')
+            var getinfo = ldbData.findObject({"nexus": "getinfo"})
+            var interestrate = getinfo.res.result.interestweight.toFixed(4) + "%"
+            var balance = getinfo.res.result.balance.toFixed(2)
+            var connections = getinfo.res.result.connections
+            var blocks = getinfo.res.result.blocks
+            var testnet = getinfo.res.result.testnet
+            console.log("In renderer.js interestweight=" + interestrate)
 
-        document.getElementById('interestrate').innerHTML = interestrate
+            document.getElementById('interestrate').innerHTML = interestrate
 
-        document.getElementById('balance').innerHTML = balance
+            document.getElementById('balance').innerHTML = balance
 
-        document.getElementById('connections').innerHTML = connections
+            document.getElementById('connections').innerHTML = connections
 
-        document.getElementById('blocks').innerHTML = blocks
+            document.getElementById('blocks').innerHTML = blocks
 
-        document.getElementById('network').innerHTML = (testnet === true) ? "Test Network" : "Main Network"
+            document.getElementById('network').innerHTML = (testnet === true) ? "Test Network" : "Main Network"
 
         }
         catch(err) {
