@@ -89,7 +89,7 @@ global.ldb = new loki(globalLdbFile, {
 })
 //adapter: adapter,
 function loadHandler() {
-    // if database did not exist it will be empty so I will intitialize here
+    // if database did not exist it will be empty so I will initialize here
     global.ldbData = global.ldb.getCollection('data');
     if (global.ldbData === null) {
         global.ldbData = global.ldb.addCollection('data');
@@ -217,15 +217,19 @@ function createWindow () {
         // Global so renderer processes will be able to access it
         global.rpcClient = new RpcClient(config)
 
+        log.debug("Running updateGetinfoDisk...")
+        updateGetinfoDisk(global.rpcClient)
+        updateGetaddressesDisk(global.rpcClient)
+        updateListtransactionsDisk(global.rpcClient)
+
         setInterval(function () {
 
+            log.debug("In setInteral updateGetinfoDisk...")
             updateGetinfoDisk(global.rpcClient)
-
             updateGetaddressesDisk(global.rpcClient)
-
             updateListtransactionsDisk(global.rpcClient)
 
-        }, 300000); // end setInterval
+        }, 15000); // end setInterval
 
     }, 100)
 
@@ -439,6 +443,17 @@ app.on('activate', function () {
                 ]
             }, // end possibleMethods
 
+            updateCollection: function (collection, error, callback) {
+
+                if (collection === 'transactions') {
+                    updateListtransactionsDisk()
+                    if (callback) callback()
+                    return error
+                }
+
+            },
+
+
             doit: function (methodAndParams, error, callback) {
                 log.debug("In MyRPC::doit, methodAndParams is ")
                 log.debug(methodAndParams)
@@ -469,7 +484,7 @@ app.on('activate', function () {
                             _params[index] = parseFloat(elem)
                         }
                     })
-                }
+                } // end if params.length
 
                 this.callExternalProgram(global.rpcClient, method, params, function(args) {
                     let resultText

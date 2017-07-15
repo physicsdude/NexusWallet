@@ -4,6 +4,7 @@
 
     const remote = require('electron').remote
     const handlebars = require('handlebars')
+    var myrpc = remote.require('./main').myrpc;
 
     console.log("In transactions.js")
 
@@ -12,6 +13,9 @@
 
         var ldbData = remote.getGlobal('ldbTransactions')
         var transactionsA = ldbData.find()
+
+        // Fill in the following info for incoming transactions:
+        // address, dateTime, percentComplete,
 
         //var transactionsTemplateElement = document.getElementById("transactionsTemplate")
         //var transactionsTempalte = transactionsTempalteElement.outerHTML
@@ -26,7 +30,11 @@
     } // end updateGetinfo
 
     $(document).ready(function () {
-        updateTransactions()
+        var error = null
+        myrpc.doit('transactions', error, function(error) {
+            if (error) alert("error is " + error)
+            updateTransactions()
+        })
     })
 
 })()

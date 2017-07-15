@@ -129,40 +129,24 @@
             <!-- MAIN NEXUS CONTENT -->
             <div class="row">
                 <div class="col-lg-12">
-                                                    <div>
-                                    <p>
-                                        <strong>Incoming Transaction - 20 Confirmations (2SRekt3392928fjfjdf83dj2jd39) [11/2/2016 04:42]</strong>
-                                        <span class="pull-right text-muted">20% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                            <span class="sr-only">20% Complete (success)</span>
-                                        </div>
-                                    </div>
+                    <tbody id="incomingTransactionsPlaceholder">
+                    </tbody>
+                    <script id="incomingTransactionsTemplate" type="text/x-handlebars-template">
+                        {{#each incomingTransactions}}
+                        <div>
+                            <p>
+                                <strong>Incoming Transaction - {{confirmations}} Confirmations (2SRekt3392928fjfjdf83dj2jd39) [11/2/2016 04:42]</strong>
+                                <span class="pull-right text-muted">XX% Complete</span>
+                            </p>
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                    <span class="sr-only">70% Complete (success)</span>
                                 </div>
-                                <div>
-                                    <p>
-                                        <strong>Incoming Transaction - 70 Confirmations (2SRekt3392928fjfjdf83dj2jd39) [11/2/2016 04:42]</strong>
-                                        <span class="pull-right text-muted">70% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                            <span class="sr-only">70% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>
-                                        <strong>Incoming Transaction - 95 Confirmations (2SRekt3392928fjfjdf83dj2jd39) [11/2/2016 04:42]</strong>
-                                        <span class="pull-right text-muted">95% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
-                                            <span class="sr-only">95% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-		
+                            </div>
+                        </div>
+                        {{/each}}
+                    </script>
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">

@@ -9,6 +9,8 @@
     function updateGetinfo() {
         console.log("Updating getinfo in index.js")
 
+        try {
+
         var ldbData = remote.getGlobal('ldbData')
         var getinfo = ldbData.findObject({"nexus": "getinfo"})
         var interestrate = getinfo.res.result.interestweight.toFixed(4) + "%"
@@ -28,11 +30,16 @@
 
         document.getElementById('network').innerHTML = (testnet === true) ? "Test Network" : "Main Network"
 
+        }
+        catch(err) {
+            console.log("ERROR Updating getinfo in index.js")
+        }
 
     } // end updateGetinfo
 
-    $(document).ready(function () {
+    $(document).ready(function (){
         console.log("DOCUMENT index.html IS READY")
+
         updateGetinfo()
         setInterval(function() {
             updateGetinfo()
