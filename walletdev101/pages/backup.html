@@ -129,12 +129,24 @@
             <!-- MAIN NEXUS CONTENT -->
             <div class="row">
                 <div class="col-lg-12">
-                    <button type="button" class="btn btn-primary">Backup Wallet</button>
+                    <button type="button" class="btn btn-primary" id="backupWallet">Backup Wallet</button>
 			<button type="button" class="btn btn-danger">Cancel</button> 
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /#wrapper -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <span id="backupResultPlaceholder"></span>
+                    <script id="backupResultTemplate" type="text/x-handlebars-template">
+                        <div>
+                            <p>{{result}}</p>
+                        </div>
+                    </script>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
 
             <!-- Insert this line above script imports  -->
             <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
@@ -151,8 +163,15 @@
             <script src="../data/morris-data.js"></script>
             <!-- Custom Theme JavaScript -->
             <script src="../dist/js/sb-admin-2.js"></script>
+            <!-- Handlebars -->
+            <script href="../vendor/handlebars/handlebars.min.js"></script>
+
+            <script>
+                require('../../renderer/backup.js')
+            </script>
 
             <!-- Insert this line after script imports -->
             <script>if (window.module) module = window.module;</script>
+
 </body>
 </html>

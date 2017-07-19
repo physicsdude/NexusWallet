@@ -26,6 +26,7 @@ const ipcMain = electron.ipcMain
 const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
+const dialog = electron.dialog
 var fs = require('fs')
 var os = require('os')
 
@@ -455,6 +456,14 @@ app.on('activate', function () {
 
             },
 
+            selectDirectory: function (callback) {
+                var error = ""
+                var destinationPath = ""
+                log.debug("In myrpc.selectDirectory in main.js")
+                destinationPath = dialog.showOpenDialog(mainWindow, {
+                    properties: ['openDirectory']})
+                callback(error,destinationPath)
+            },
 
             doit: function (methodAndParams, error, callback) {
                 log.debug("In MyRPC::doit, methodAndParams is ")
