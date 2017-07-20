@@ -138,8 +138,7 @@
                     <span id="sendResultPlaceholder"></span>
                     <script id="sendResultTemplate" type="text/x-handlebars-template">
                         <div>
-                        need to fix this based off of what result is ...
-                        and hide it until there is a result
+                            Send Result:
                             <p>{{result}}</p>
                         </div>
                     </script>
@@ -155,15 +154,14 @@
                     <div class="col-lg-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                Recipient 1
+                                Recipient
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label>Enter a Nexus Address:</label>
                                     <input class="form-control" placeholder="Enter Address Here" id="addressTo">
-                                    <button type="button" class="btn btn-outline btn-primary btn-sm">Contact From Address Book</button>
-                                    <button type="button" class="btn btn-outline btn-primary btn-sm">Paste Address</button>
-                                    <button type="button" class="btn btn-outline btn-primary btn-sm">Remove Recipient</button>
+                                    <button type="button" class="btn btn-outline btn-primary btn-sm" id="pasteAddress">Paste Address</button>
+                                    <button type="button" class="btn btn-outline btn-primary btn-sm" id="removeRecipient">Remove Recipient</button>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-3">
                                     <label>Amount of Nexus:</label>
@@ -179,29 +177,8 @@
 
 
                     <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <i class="fa fa-th-list"></i> Transaction Actions <i class="fa fa-th-list"></i>
-                            </div>
-                            <div class="panel-body">
-                                <p>
-                                    <div class="col-lg-4">
-                                        <button type="button" class="btn btn-primary btn-lg" id="sendNexus"><i class="glyphicon glyphicon-arrow-right"></i> SEND</button>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Recipient</button>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <button type="button" class="btn btn-primary"><i class="fa fa-minus"></i> Clear All</button>
-                                    </div>
-                                </p>
-                            </div>
-                            <div class="panel-footer">
-                                <i class="fa fa-th-list"></i> Transaction Actions <i class="fa fa-th-list"></i>
-                            </div>
-                        </div>
-
-
+                                     <button type="button" class="btn btn-primary btn-lg" id="sendNexus"><i class="glyphicon glyphicon-arrow-right"></i> SEND</button>
+                                     <button type="button" class="btn btn-primary" id="clearAll"><i class="fa fa-minus"></i> Clear All</button>
                         <!-- /.col-lg-4 -->
                     </div>
 

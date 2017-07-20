@@ -2,7 +2,7 @@
     // Initial Author: Bryan Gmyrek <bryangmyrekcom@gmail.com>
     'use strict';
 
-    const { remote } = require('electron')
+    const { remote, clipboard } = require('electron')
     const dialog = require('electron').remote.dialog
     const handlebars = require('handlebars')
     var myrpc = remote.require('./main').myrpc;
@@ -45,6 +45,8 @@
     } // end updateGetinfo
 
     $("#sendNexus").click(function(){
+
+
         var address = $("#addressTo").val()
         var amount = $("#amountNexus").val()
         console.log("address= "+address+", amount= "+amount)
@@ -75,6 +77,26 @@
         }) // end show are you sure message box
 
     }) // end sendNexus.click
+
+    $("#pasteAddress").click(function(){
+        console.log("Attempting to paste address text from clipboard.")
+        $('#addressTo').val(clipboard.readText())
+    })
+
+    $("#removeRecipient").click(function(){
+        console.log("Attempting to remove recipient.")
+        $('#addressTo').val("")
+    })
+
+    $("#clearAll").click(function(){
+        console.log("Attempting to clear all.")
+        $('#addressTo').val("")
+        $('#amountNexus').val("")
+    })
+
+    $(document).ready(function () {
+        console.log("DOCUMENT send.html IS READY")
+    })
 
 })()
 
