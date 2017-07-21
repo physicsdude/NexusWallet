@@ -64,7 +64,8 @@
     "loki-fs-cipher-adapter": "^1.0.2",
     "lokijs": "^1.4.3",
     "nexus": "",
-    "node-json-rpc2": "^1.1.0"
+    "node-json-rpc2": "^1.1.0",
+    "qrcode": "^0.8.2"
   },
   "devDependencies": {
     "electron": "^1.6.8",

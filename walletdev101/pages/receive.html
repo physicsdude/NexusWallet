@@ -126,6 +126,7 @@
 
         <!-- /.row -->
         <!-- MAIN NEXUS CONTENT -->
+
         <div class="row">
             <div class="col-lg-12">
 
@@ -171,6 +172,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="panel panel-default" style="display: none" id="qrcode-display-holder-{{address}}">
+                                        <div class="panel-body">
+                                            <canvas id="qrcode-display-{{address}}"></canvas>
+                                        </div>
+                                    </div>
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <p>
@@ -178,10 +184,10 @@
                                                 <button type="button" class="btn btn-primary copy-to-clipboard" id="copy-{{address}}"><i class="fa fa-paste"></i> Copy To Clipboard</button>
                                             </div>
                                             <div class="col-lg-4">
-                                                <button type="button" class="btn btn-primary" id="showqr-{{address}}"><i class="fa fa-qrcode"></i> Show QR Code</button>
+                                                <button type="button" class="btn btn-primary showqr" id="showqr-{{address}}"><i class="fa fa-qrcode"></i> Show QR Code</button>
                                             </div>
                                             <div class="col-lg-4">
-                                                <button type="button" class="btn btn-primary" id="signmessage-{{address}}"><i class="fa fa-edit"></i> Sign Message</button>
+                                                <button type="button" class="btn btn-primary signmessage" id="signmessage-{{address}}"><i class="fa fa-edit"></i> Sign Message</button>
                                             </div>
                                             </p>
                                         </div>
