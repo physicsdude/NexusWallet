@@ -5,6 +5,7 @@
     const { remote, clipboard } = require('electron')
     const dialog = require('electron').remote.dialog
     const handlebars = require('handlebars')
+    const qrcode = require('qrcode')
     var myrpc = remote.require('./main').myrpc;
 
     console.log("In receive.js")
@@ -53,6 +54,20 @@
         var addr = $(this).attr("id").split("-")[1]
         console.log("Copying address '"+addr+"' to clipboard")
         clipboard.writeText(addr)
+    })
+
+    $(document).on('click', "button.showqr", function() {
+        var addr = $(this).attr("id").split("-")[1]
+        console.log("Creating a qrcode for address '"+addr+"'")
+        qrcode.toCanvas(document.getElementById('qrcode-display-'+addr), addr, function (error) {
+            if (error) {
+                console.log(error)
+            }
+            else {
+                console.log("much success!")
+                $("#qrcode-display-holder-"+addr).show(1000)
+            }
+        })
     })
 
     $(document).ready(function () {
