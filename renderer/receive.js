@@ -2,7 +2,7 @@
     // Initial Author: Bryan Gmyrek <bryangmyrekcom@gmail.com>
     'use strict';
 
-    const { remote } = require('electron')
+    const { remote, clipboard } = require('electron')
     const dialog = require('electron').remote.dialog
     const handlebars = require('handlebars')
     var myrpc = remote.require('./main').myrpc;
@@ -43,10 +43,16 @@
             var buttons = ['OK'];
             dialog.showMessageBox({ type: 'info', buttons: buttons, message: "New Address Created\n"+resultText }, function (buttonIndex) {
                 updateAddresses(function(){
-                    document.getElementById(address).scrollIntoView(true)
+                    document.getElementById("address-"+address).scrollIntoView(true)
                 })
             });
         })
+    })
+
+    $(document).on('click', "button.copy-to-clipboard", function() {
+        var addr = $(this).attr("id").split("-")[1]
+        console.log("Copying address '"+addr+"' to clipboard")
+        clipboard.writeText(addr)
     })
 
     $(document).ready(function () {
